@@ -13,7 +13,7 @@ public class JdbcTemplateTest {
         //创建数据源对象
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setDriverClass("com.mysql.jdbc.Driver");
-        dataSource.setJdbcUrl("jdbc:mysql://192.168.42.175/test");
+        dataSource.setJdbcUrl("jdbc:mysql://localhost/test");
         dataSource.setUser("root");
         dataSource.setPassword("123456");
 
