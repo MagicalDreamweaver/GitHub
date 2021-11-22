@@ -11,6 +11,9 @@
     
     <!--配置监听器-->
     <listener>
+        <!--自定义写法-->
+        <!--<listener-class>com.fang.listener.ContextLoaderListener</listener-class>-->
+        <!--官方写法-->
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     
