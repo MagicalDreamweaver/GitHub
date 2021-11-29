@@ -1,6 +1,7 @@
 package com.fang.controller;
 
 import com.fang.domain.User;
+import com.fang.domain.Vo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("/user")
@@ -94,4 +96,39 @@ public class UserController {
         user.setAge("20");
         return user;
     }
+
+    //Controller中的业务方法的参数名称要与请求参数的name一致，参数值会自动映射匹配。
+    @RequestMapping("/quick11")
+    @ResponseBody
+    public void save11(String username,int age)  {
+        System.out.println(username);
+        System.out.println(age);
+    }
+
+
+    @RequestMapping("/quick12")
+    @ResponseBody
+    public void save12(User user)  {
+        System.out.println(user);
+    }
+
+    @RequestMapping("/quick13")
+    @ResponseBody
+    public void save13(String[] strs)  {
+        System.out.println(strs);
+        System.out.println(Arrays.asList(strs));
+    }
+
+    @RequestMapping("/quick14")
+    @ResponseBody
+    public void save14(Vo vo)  {
+        System.out.println(vo);
+    }
+
+
+
+
+
+
+
 }
