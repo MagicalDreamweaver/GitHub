@@ -6,15 +6,25 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -97,6 +107,18 @@ public class UserController {
         return user;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     //Controller中的业务方法的参数名称要与请求参数的name一致，参数值会自动映射匹配。
     @RequestMapping("/quick11")
     @ResponseBody
@@ -124,6 +146,70 @@ public class UserController {
     public void save14(Vo vo)  {
         System.out.println(vo);
     }
+
+    @RequestMapping("/quick15")
+    @ResponseBody
+    public void save15(@RequestBody List<User> userList)  {
+        System.out.println(userList);
+    }
+
+
+    @RequestMapping("/quick16")
+    @ResponseBody
+    public void save16(@RequestParam(value = "name", required = false, defaultValue = "lisi") String username) {
+        System.out.println(username);
+    }
+
+    @RequestMapping(value = "/quick17/{name}")
+    @ResponseBody
+    public void save17(@PathVariable("name") String username) {
+        System.out.println(username);
+    }
+
+    @RequestMapping(value = "/quick18")
+    @ResponseBody
+    public void save18(Date date) {
+        System.out.println(date);
+    }
+
+    @RequestMapping(value = "/quick19")
+    @ResponseBody
+    public void save19(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        System.out.println(request);
+        System.out.println(response);
+        System.out.println(session);
+    }
+
+    @RequestMapping(value = "/quick20")
+    @ResponseBody
+    public void save20(@RequestHeader("User-Agent") String userAgent) {
+        System.out.println(userAgent);
+    }
+
+    @RequestMapping(value = "/quick21")
+    @ResponseBody
+    public void save21(@CookieValue("JSESSIONID") String jsessionId) {
+        System.out.println(jsessionId);
+    }
+
+    @RequestMapping(value = "/quick22")
+    @ResponseBody
+    public void save22(String username, MultipartFile uploadFile) throws IOException {
+        System.out.println(username);
+        String originalFilename = uploadFile.getOriginalFilename();
+        uploadFile.transferTo(new File("D:\\work_space\\upload\\"+originalFilename));
+    }
+
+    @RequestMapping(value = "/quick23")
+    @ResponseBody
+    public void save23(String username, MultipartFile[] uploadFile) throws IOException {
+        System.out.println(username);
+        for (MultipartFile multipartFile:uploadFile) {
+            String originalFilename = multipartFile.getOriginalFilename();
+            multipartFile.transferTo(new File("D:\\work_space\\upload\\"+originalFilename));
+        }
+    }
+
 
 
 
