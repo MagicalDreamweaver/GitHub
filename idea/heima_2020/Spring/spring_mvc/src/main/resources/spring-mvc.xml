@@ -22,7 +22,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--配置处理器适配器:将Jackson的转换器添加进处理器适配器中-->
+    <!--配置处理器适配器:将Jackson的转换器添加进处理器适配器中，数据响应时-->
     <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
@@ -30,7 +30,8 @@
             </list>
         </property>
     </bean>-->
-    <!--mvc 注解驱动：默认底层就会集成jackson进行对象或集合的json格式字符串的转换  -->
+    <!--mvc 注解驱动：默认底层就会集成jackson进行对象或集合的json格式字符串的转换 数据响应时 -->
+    <!--在<annotation-driven>中引用日期转换器-->
     <mvc:annotation-driven conversion-service="conversionServiceFactory" />
 
     <!--开发资源访问-->
@@ -39,6 +40,7 @@
     <!--找不到的隐射地址，让tomcat找-->
     <mvc:default-servlet-handler/>
 
+    <!--日期格式转换，数据请求时-->
     <bean id="conversionServiceFactory" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <list>
