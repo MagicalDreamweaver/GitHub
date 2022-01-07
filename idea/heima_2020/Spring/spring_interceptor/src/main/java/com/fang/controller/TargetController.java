@@ -10,7 +10,6 @@ public class TargetController {
     @RequestMapping("target")
     public ModelAndView target(ModelAndView modelAndView){
         System.out.println("目标资源执行中");
-        modelAndView.addObject("name","feifei");
         modelAndView.setViewName("index");
         return modelAndView;
     }
