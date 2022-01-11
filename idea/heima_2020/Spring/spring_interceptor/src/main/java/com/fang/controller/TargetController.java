@@ -11,6 +11,7 @@ public class TargetController {
     public ModelAndView target(ModelAndView modelAndView){
         System.out.println("目标资源执行中");
         modelAndView.setViewName("index");
+        modelAndView.addObject("name","feifei");
         return modelAndView;
     }
 }

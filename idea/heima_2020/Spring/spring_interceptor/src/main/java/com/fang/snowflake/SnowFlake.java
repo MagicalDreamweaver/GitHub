@@ -83,10 +83,6 @@ public class SnowFlake {
         }
 
         lastStamp = currStamp;
-        System.out.println("currStamp:"+currStamp);
-        System.out.println("TIMESTAMP:"+(currStamp - START_STAMP));
-        System.out.println("MACHINE:"+machineId);
-        System.out.println("sequence:"+sequence);
         return (currStamp - START_STAMP) << TIMESTAMP_LEFT // 时间戳部分
                 | machineId << MACHINE_LEFT             // 机器标识部分
                 | sequence;                             // 序列号部分

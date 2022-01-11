@@ -23,4 +23,12 @@
     <!--4、组件扫描  扫描Controller-->
     <context:component-scan base-package="com.fang.controller"/>
 
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.fang.interceptor.MyInterceptor1"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

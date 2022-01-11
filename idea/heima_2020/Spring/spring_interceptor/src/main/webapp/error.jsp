@@ -5,7 +5,6 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<h1>这是index主页</h1>
-<h2>${name}</h2>index.jsp
+<h1>这是error</h1>
 </body>
 </html>
